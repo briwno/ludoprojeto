@@ -30,8 +30,6 @@ void cursorxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-// Função para mudar o nome do jogador
-
 
 // emoji da peça ♙
 
@@ -156,6 +154,76 @@ int exibirMenu() {
     }
 }
 
+// Função para jogar
+void jogar() {
+    system("cls");
+    int numJogadores;
+    
+    printf("Quantos jogadores (2-4)? ");
+    scanf("%d", &numJogadores);
+    
+    if(numJogadores < 2 || numJogadores > 4) {
+        printf("Número inválido de jogadores. Tente novamente.\n");
+        return;
+    }
+    
+    system("cls");
+    exibirTabuleiro(); // Mostra o tabuleiro
+    
+    printf("Pressione qualquer tecla para continuar...\n");
+    getch();
+}
+
+// Função para exibir o tabuleiro
+void exibirTabuleiro(){
+printf("                                ___________ \n");
+printf("                               |   |   |   |\n");
+printf("                               |   |   |   |\n");
+printf("                               |___|___|___|\n");
+printf("                               |   |   |   |\n");
+printf("                               |   |   |   |\n");
+printf("                               |___|___|___|\n");
+printf("                 ____          |   |   |   |          ____\n");
+printf("                |    |         |   |   |   |         |    |\n");
+printf("                |    |         |___|___|___|         |    |\n");
+printf("            ____|    |____     |   |   |   |     ____|    |____\n");
+printf("           |              |    |   |   |   |    |              |\n");
+printf("           |            | |    |___|___|___|    |            | |\n");
+printf("           |____      ____|    |   |   |   |    |____      ____|\n");
+printf("                |    |         |   |   |   |         |    |\n");
+printf("                |    |         |___|___|___|         |    |\n");
+printf("                |____|         |   |   |   |         |____|\n");
+printf("                               |   |   |   |\n");
+printf("         _______________________|___|___|___|_______________________\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |___|___|___|___|___|___|           |___|___|___|___|___|___|\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |___|___|___|___|___|___|           |___|___|___|___|___|___|\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |   |   |   |   |   |   |           |   |   |   |   |   |   |\n");
+printf("        |___|___|___|___|___|___|___________|___|___|___|___|___|___|\n");
+printf("                               |   |   |   |\n");
+printf("                  ____         |   |   |   |          ____\n");
+printf("                 |    |        |___|___|___|         |    |\n");
+printf("                 |    |        |   |   |   |         |    |\n");
+printf("             ____|    |____    |   |   |   |     ____|    |____\n");
+printf("            |              |   |___|___|___|    |              |\n");
+printf("            |            | |   |   |   |   |    |            | |\n");
+printf("            |____      ____|   |   |   |   |    |____      ____|\n");
+printf("                |    |         |   |   |   |         |    |\n");
+printf("                |    |         |___|___|___|         |    |\n");
+printf("                |____|         |   |   |   |         |____|\n");
+printf("                               |___|___|___|\n");
+printf("                               |   |   |   |\n");
+printf("                               |   |   |   |\n");
+printf("                               |___|___|___|\n");
+printf("                               |   |   |   |\n");
+printf("                               |   |   |   |\n");
+printf("                               |___|___|___|\n");
+
+}
 
 // Fun��o para exibir as regras do jogo
 void exibirRegras() {
@@ -302,7 +370,7 @@ int main() {
         switch(opcao) {
             
             case 1:
-                
+                jogar();
                 break;
             case 2:
                 exibirRegras();
