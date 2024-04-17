@@ -154,26 +154,6 @@ int exibirMenu() {
     }
 }
 
-// Função para jogar
-void jogar() {
-    system("cls");
-    int numJogadores;
-    
-    printf("Quantos jogadores (2-4)? ");
-    scanf("%d", &numJogadores);
-    
-    if(numJogadores < 2 || numJogadores > 4) {
-        printf("Número inválido de jogadores. Tente novamente.\n");
-        return;
-    }
-    
-    system("cls");
-    exibirTabuleiro(); // Mostra o tabuleiro
-    
-    printf("Pressione qualquer tecla para continuar...\n");
-    getch();
-}
-
 // Função para exibir o tabuleiro
 void exibirTabuleiro(){
 printf("                                ___________ \n");
@@ -225,18 +205,44 @@ printf("                               |___|___|___|\n");
 
 }
 
+
+// Função para jogar
+void jogar() {
+    system("cls");
+    int numJogadores;
+    
+    printf("Quantos jogadores (2-4)? ");
+    scanf("%d", &numJogadores);
+    
+    if(numJogadores < 2 || numJogadores > 4) {
+        printf("Número inválido de jogadores. Tente novamente.\n");
+        getch();
+        system("cls");
+        jogar();
+    }
+    
+    system("cls");
+    exibirTabuleiro(); // Mostra o tabuleiro
+    printf("\n\n\n");
+    
+    printf("Pressione qualquer tecla para continuar...\n");
+    getch();
+}
+
+
+
 // Fun��o para exibir as regras do jogo
 void exibirRegras() {
     system("cls"); // Limpa a tela
- printf(" _____                                                   _____ \n");
-    printf("( ___ )------------------------------------------------- ( ___ )\n");
-    printf(" |   |                                                     |   | \n");
-    printf(" |   |           ____                                       |   | \n");
-    printf(" |   |          |  _ \\ ___  __ _ _ __ __ _ ___               |   | \n");
-    printf(" |   |          | |_) / _ \\/ _` | '__/ _` / __|              |   | \n");
-    printf(" |   |          |  _ <  __/ (_| | | | (_| \\__ \\              |   | \n");
-    printf(" |   |          |_| \\_\\___|\\__, |_|  \\__,_|___/              |   | \n");
-    printf(" |   |                     |___/                             |   | \n");
+    printf(" _____                                                         _____ \n");
+    printf("( ___ )-------------------------------------------------------( ___ )\n");
+    printf(" |   |                                                         |   | \n");
+    printf(" |   |           ____                                          |   | \n");
+    printf(" |   |          |  _ \\ ___  __ _ _ __ __ _ ___                 |   | \n");
+    printf(" |   |          | |_) / _ \\/ _` | '__/ _` / __|                |   | \n");
+    printf(" |   |          |  _ <  __/ (_| | | | (_| \\__ \\                |   | \n");
+    printf(" |   |          |_| \\_\\___|\\__, |_|  \\__,_|___/                |   | \n");
+    printf(" |   |                     |___/                               |   | \n");
     printf(" |   |                                                         |   | \n");
     printf(" |   | Início: Todos os jogadores lançam o dado.               |   | \n");
     printf(" |   |                                                         |   | \n");
@@ -244,7 +250,7 @@ void exibirRegras() {
     printf(" |   |               obtidos no dado.                          |   | \n");
     printf(" |   |                                                         |   | \n");
     printf(" |   | Objetivo: Leve seus peões do ponto de partida até o     |   | \n");
-    printf(" |   |            ponto final no tabuleiro.                     |   | \n");
+    printf(" |   |            ponto final no tabuleiro.                    |   | \n");
     printf(" |   |                                                         |   | \n");
     printf(" |   | Peões: Você tem quatro peões.                           |   | \n");
     printf(" |   |         Somente um peão pode ocupar uma casa.           |   | \n");
@@ -259,12 +265,12 @@ void exibirRegras() {
     printf(" |   |          adversário, o peão adversário retorna à sua    |   | \n");
     printf(" |   |          base e precisa recomeçar o trajeto.            |   | \n");
     printf(" |   |                                                         |   | \n");
-    printf(" |   | Chegada: Para entrar na casa final, você precisa         |   | \n");
-    printf(" |   |          tirar o número exato no dado. Se tirar mais,    |   | \n");
-    printf(" |   |          o peão avança e depois retorna.                 |   | \n");
+    printf(" |   | Chegada: Para entrar na casa final, você precisa        |   | \n");
+    printf(" |   |          tirar o número exato no dado. Se tirar mais,   |   | \n");
+    printf(" |   |          o peão avança e depois retorna.                |   | \n");
     printf(" |   |                                                         |   | \n");
-    printf(" |   | Vitória: O primeiro jogador a levar todos os quatro      |   | \n");
-    printf(" |   |          peões ao ponto final vence o jogo.              |   | \n");
+    printf(" |   | Vitória: O primeiro jogador a levar todos os quatro     |   | \n");
+    printf(" |   |          peões ao ponto final vence o jogo.             |   | \n");
     printf(" |___|                                                         |___| \n");
     printf("(_____)-------------------------------------------------------(_____) \n");
 
@@ -311,10 +317,10 @@ printf(" |   |      | |   | '__/ _ \\/ _` | | __/ _ \\/ __|      |   | \n");
 printf(" |   |      | |___| | |  __/ (_| | | || (_) \\__ \\      |   | \n");
 printf(" |   |       \\____|_|  \\___|\\__,_|_|\\__\\___/|___/      |   | \n");
 printf(" |   |                                                 |   | \n");
-printf(" |   |             2024 Ludo Ultimate                 |   | \n");
-printf(" |   |  Foi pensado e desenvolvido pelos programadores  |  | \n");
-printf(" |   |              Bruno Alves                        |  | \n");
-printf(" |   |              Nicolas Keyno                      |  | \n");
+printf(" |   |             2024 Ludo Ultimate                  |   | \n");
+printf(" |   |  Foi pensado e desenvolvido pelos programadores |   | \n");
+printf(" |   |              Bruno Alves                        |   | \n");
+printf(" |   |              Nicolas Keyno                      |   | \n");
 printf(" |   |                                                 |   | \n");
 printf(" |___|                                                 |___| \n");
 printf("(_____)-----------------------------------------------(_____) \n");
