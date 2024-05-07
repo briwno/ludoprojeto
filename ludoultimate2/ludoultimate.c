@@ -3,7 +3,6 @@
 #include <string.h> 
 
 // Protótipos das funções
-//void TelaIntroducao(char nome[]);
 void TelaMenu();
 void CheckMusicPlaying(); // Movido para fora da função TelaMenu
 
@@ -40,74 +39,14 @@ int main() {
     soundButtonRec = (Rectangle){ 1850, 20, (float)soundOnTexture.width, (float)soundOnTexture.height };
 
     // Variável para armazenar o nome do usuário
-    //char nome[20] = "";
+    char player1[20] = "";
+    char player2[20] = "";
+    char player3[20] = "";
+    char player4[20] = "";
 
     // Exibe a tela de introdução para obter o nome do usuário
    // TelaIntroducao(nome);
 
-    // Exibe a tela do menu principal
-    TelaMenu();
-
-    // Fecha a janela ao sair do laço principal
-    CloseWindow();
-    
-    //Descarregar
-    UnloadTexture(soundOnTexture);
-    UnloadTexture(soundOffTexture);
-    UnloadMusicStream(musicamenu);
-    CloseAudioDevice();
-
-    return 0;
-}
-
-/* Função para exibir a tela de introdução
-void TelaIntroducao(char nome[]) {
-    Image logo = LoadImage("logojogo.png");
-    Texture2D Texture = LoadTextureFromImage(logo);
-    UnloadImage(logo);
-
-    Image bgImage = LoadImage("fundojogo.png");
-    Texture2D bgTexture = LoadTextureFromImage(bgImage);
-    UnloadImage(bgImage);
-
-    // Laço principal da tela de introdução
-    while (!WindowShouldClose()) {
-        UpdateMusicStream(musicamenu);
-        // Atualiza a entrada do teclado
-        if (IsKeyPressed(KEY_ENTER) && strlen(nome) > 0) {
-            break; // Sai do laço da tela de introdução
-        } else {
-            // Lê a entrada do teclado para obter o nome do usuário
-            int key = GetKeyPressed();
-            if ((key >= 32) && (key <= 125) && (strlen(nome) < 19)) {
-                nome[strlen(nome)] = (char)key;
-            } else if ((key == KEY_BACKSPACE) && (strlen(nome) > 0)) {
-                nome[strlen(nome) - 1] = '\0';
-            }
-        }
-
-        // Limpa o fundo com uma cor
-        ClearBackground(RAYWHITE);
-        DrawTexture(bgTexture, 0, 0, WHITE);
-        DrawTexture(Texture, -10, -50, WHITE);
-        // Desenha a mensagem solicitando o nome do usuário
-        DrawText("Por favor, digite seu nome:", 150, 400, 20, WHITE);
-
-        // Desenha a caixa de texto
-        DrawRectangle(140, 430, 400, 40, WHITE);
-        DrawRectangleLinesEx((Rectangle){ 140, 430, 400, 40 }, 4, BLACK);
-
-        // Mostra o nome digitado pelo usuário
-        DrawText(nome, 150, 440, 20, BLACK);
-
-        // Atualiza a janela
-        EndDrawing();
-    }
-}
-*/
-
-// Função para exibir a tela do menu principal
-void TelaMenu() {
     // Fundo
     Image bgImage = LoadImage("fundojogo.png");
     Texture2D bgTexture = LoadTextureFromImage(bgImage);
@@ -183,4 +122,16 @@ void TelaMenu() {
         // Atualiza a janela
         EndDrawing();
     }
+    
+
+    // Fecha a janela ao sair do laço principal
+    CloseWindow();
+    
+    //Descarregar
+    UnloadTexture(soundOnTexture);
+    UnloadTexture(soundOffTexture);
+    UnloadMusicStream(musicamenu);
+    CloseAudioDevice();
+
+    return 0;
 }
