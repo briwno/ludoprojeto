@@ -3,8 +3,8 @@
 #include <string.h> 
 
 // Protótipos das funções
-void TelaIntroducao(char nome[]);
-void TelaMenu(const char nome[]);
+//void TelaIntroducao(char nome[]);
+void TelaMenu();
 void CheckMusicPlaying(); // Movido para fora da função TelaMenu
 
 // Variáveis globais
@@ -40,13 +40,13 @@ int main() {
     soundButtonRec = (Rectangle){ 1850, 20, (float)soundOnTexture.width, (float)soundOnTexture.height };
 
     // Variável para armazenar o nome do usuário
-    char nome[20] = "";
+    //char nome[20] = "";
 
     // Exibe a tela de introdução para obter o nome do usuário
-    TelaIntroducao(nome);
+   // TelaIntroducao(nome);
 
     // Exibe a tela do menu principal
-    TelaMenu(nome);
+    TelaMenu();
 
     // Fecha a janela ao sair do laço principal
     CloseWindow();
@@ -60,7 +60,7 @@ int main() {
     return 0;
 }
 
-// Função para exibir a tela de introdução
+/* Função para exibir a tela de introdução
 void TelaIntroducao(char nome[]) {
     Image logo = LoadImage("logojogo.png");
     Texture2D Texture = LoadTextureFromImage(logo);
@@ -104,9 +104,10 @@ void TelaIntroducao(char nome[]) {
         EndDrawing();
     }
 }
+*/
 
 // Função para exibir a tela do menu principal
-void TelaMenu(const char nome[]) {
+void TelaMenu() {
     // Fundo
     Image bgImage = LoadImage("fundojogo.png");
     Texture2D bgTexture = LoadTextureFromImage(bgImage);
@@ -140,7 +141,7 @@ void TelaMenu(const char nome[]) {
         else DrawTexture(soundOnTexture, (int)soundButtonRec.x, (int)soundButtonRec.y, WHITE);
 
         // Desenha a mensagem "Logado como:" seguido do nome do usuário
-        DrawText(TextFormat("Logado como: %s", nome), 20, 20, 20, WHITE);
+        //DrawText(TextFormat("Logado como: %s", nome), 20, 20, 20, WHITE);
         
         // Desenha os créditos do jogo
         DrawText("Um projeto por Rivals Forge", 1500, 410, 20, WHITE);
