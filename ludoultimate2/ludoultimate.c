@@ -2,15 +2,14 @@
 #include <raylib.h>
 #include <string.h> 
 
-// Protótipos das funções
-void TelaMenu();
-void CheckMusicPlaying(); // Movido para fora da função TelaMenu
-
 // Variáveis globais
-bool pause = false;
+mostrarRanking = false;
+mostrarRegras = false;
+pause = false;
 Music musicamenu;
 Texture2D soundOnTexture;
 Texture2D soundOffTexture;
+Texture2D voltarTexture;
 Rectangle soundButtonRec;
 int selectedOption = 0; // Opção selecionada no menu
 
@@ -18,10 +17,12 @@ int selectedOption = 0; // Opção selecionada no menu
 const char* menuOptions[] = {"Jogar", "Regras", "Ranking", "Logout", "Fechar"};
 int numOptions = sizeof(menuOptions) / sizeof(menuOptions[0]);
 
+
 int main() {
     Image jogo = LoadImage("logoprograma.png");
     // Inicializa a janela
-    InitWindow(0, 0, "Ludo Ultimate");
+
+    InitWindow(1920, 1080, "Ludo Ultimate");  
     SetWindowIcon(jogo);
     SetTargetFPS(60);
     InitAudioDevice();
@@ -34,6 +35,8 @@ int main() {
     // Carrega as texturas dos botões de som
     soundOnTexture = LoadTexture("sound_on.png");
     soundOffTexture = LoadTexture("sound_off.png");
+
+    voltarTexture = LoadTexture("voltar.png");
 
     // Define a posição e o tamanho do botão de som
     soundButtonRec = (Rectangle){ 1850, 20, (float)soundOnTexture.width, (float)soundOnTexture.height };
@@ -55,6 +58,10 @@ int main() {
     Image logo = LoadImage("logojogo.png");
     Texture2D Texture = LoadTextureFromImage(logo);
     UnloadImage(logo);
+    
+    Image regras = LoadImage("telaregras.png");
+    Texture2D regrasTexture = LoadTextureFromImage(regras);
+    UnloadImage(regras);
 
     // Laço principal do menu principal
     while (!WindowShouldClose()) {
@@ -78,9 +85,6 @@ int main() {
         // Desenha o botão de som
         if (pause) DrawTexture(soundOffTexture, (int)soundButtonRec.x, (int)soundButtonRec.y, WHITE);
         else DrawTexture(soundOnTexture, (int)soundButtonRec.x, (int)soundButtonRec.y, WHITE);
-
-        // Desenha a mensagem "Logado como:" seguido do nome do usuário
-        //DrawText(TextFormat("Logado como: %s", nome), 20, 20, 20, WHITE);
         
         // Desenha os créditos do jogo
         DrawText("Um projeto por Rivals Forge", 1500, 410, 20, WHITE);
@@ -119,6 +123,21 @@ int main() {
             DrawText(menuOptions[i], 155, 400 + 50 * i, 50, textColor);
         }
         
+        //abrir tela de regras
+if (CheckCollisionPointRec(GetMousePosition(), (Rectangle){ 155, 400 + 50 * 1, MeasureText(menuOptions[1], 50), 50 })) {
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        mostrarRegras = true; // Define a variável para mostrar as regras
+    }
+}
+
+if (mostrarRegras) {
+    // Carrega e desenha a imagem das regras
+    DrawTexture(regrasTexture, 0, 0, WHITE);
+    if (pause) DrawTexture(soundOffTexture, (int)soundButtonRec.x, (int)soundButtonRec.y, WHITE);
+    else DrawTexture(soundOnTexture, (int)soundButtonRec.x, (int)soundButtonRec.y, WHITE);
+
+    
+}
         // Atualiza a janela
         EndDrawing();
     }
